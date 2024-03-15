@@ -16,4 +16,11 @@ html, body {
   /* verwijder marge tussen canvas en rand van window
    */ 
   margin: 0px;
+  
+  .background{
+  background-image:url('basketballCourt.gif');
+  background-repeat: no-repeat;
+  width: 100%;
+  
+  }
 }
