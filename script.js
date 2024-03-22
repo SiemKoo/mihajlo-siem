@@ -17,12 +17,18 @@
 /* ********************************************* */
 const SPELEN = 1;
 const GAMEOVER = 2;
-var spelStatus = SPELEN;
+let spelStatus = SPELEN;
 
-var spelerX = 600; // x-positie van speler
-var spelerY = 600; // y-positie van speler
-var health = 100;  // health van speler
+let spelerX = 600; // x-positie van speler
+let spelerY = 600; // y-positie van speler
+let health = 100;  // health van speler
 
+let img; // plaatje
+
+let spelerSpringt = false;
+let springSnelheid = 0;
+let springSnelheidStart = 15;
+let zwaartekracht = 0.9;
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
 /* ********************************************* */
@@ -32,9 +38,6 @@ var health = 100;  // health van speler
  */
 var beweegAlles = function() {
   // speler
-  if (keyIsDown(87) && spelerY > 25) { //W
-  spelerY= spelerY-4
-  }
 
   if (keyIsDown(83) && spelerY < 695) { //S
     spelerY= spelerY+4
@@ -47,6 +50,27 @@ var beweegAlles = function() {
       if (keyIsDown(68) && spelerX < 1255) { //D
         spelerX= spelerX+4
         }
+          if (spelerSpringt === false && keyIsDown(87)) {
+
+            spelerSpringt = true;
+            
+            springSnelheid = springSnelheidStart;
+            
+            }
+            
+            if (spelerSpringt === true) {
+            
+            spelerY = spelerY - springSnelheid;
+            
+            springSnelheid = springSnelheid - zwaartekracht;
+            
+            }
+            
+            if (spelerY > 600) {
+            
+            spelerSpringt = false;
+            
+            }
   // vijand
 
   // kogel
@@ -71,17 +95,18 @@ var verwerkBotsing = function() {
  */
 var tekenAlles = function() {
   // achtergrond
- fill("red")
+ fill("green")
  rect(0,0,1280,720)
   // vijand
 
   // kogel
 
   // speler
-  fill("white");
-  rect(spelerX - 25, spelerY - 25, 50, 50);
-  fill("black");
-  ellipse(spelerX, spelerY, 10, 10);
+  // fill("white");
+  // rect(spelerX - 25, spelerY - 25, 50, 50);
+  // fill("black");
+  // ellipse(spelerX, spelerY, 10, 10);
+  image(img, spelerX, spelerY);
 
   // punten en health
 
@@ -100,8 +125,14 @@ function setup() {
   // Maak een canvas (rechthoek) waarin je je speelveld kunt tekenen
   createCanvas(1280, 720);
 
-  // Kleur de achtergrond blauw, zodat je het kunt zien
-  background('blue');
+}
+
+/**
+ * Preload
+ * deze functie geeft de player een plaatje
+ */
+function preload() {
+  img = loadImage ('players/group-breaking-bad/walterwhite.png');
 }
 
 /**
