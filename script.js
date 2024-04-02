@@ -13,14 +13,14 @@
 "use strict"
 
 /* ********************************************* */
-/* globale variabelen die je gebruikt in je game */
+/* globale variabelen die je gebruikt in je gamwe */
 /* ********************************************* */
 const SPELEN = 1;
 const GAMEOVER = 2;
 let spelStatus = SPELEN;
 
 let spelerX = 600; // x-positie van speler
-let spelerY = 600; // y-positie van speler
+let spelerY = 560; // y-positie van speler
 let health = 100;  // health van speler
 
 let img; // plaatje
@@ -39,7 +39,7 @@ let zwaartekracht = 0.9;
 var beweegAlles = function() {
   // speler
 
-  if (keyIsDown(83) && spelerY < 695) { //S
+  if (keyIsDown(83) && spelerY < 750) { //S
     spelerY= spelerY+4
     }
 
@@ -50,7 +50,7 @@ var beweegAlles = function() {
       if (keyIsDown(68) && spelerX < 1255) { //D
         spelerX= spelerX+4
         }
-          if (spelerSpringt === false && keyIsDown(87)) {
+          if (spelerSpringt === false && keyIsDown(87)) { //W
 
             spelerSpringt = true;
             
@@ -66,7 +66,7 @@ var beweegAlles = function() {
             
             }
             
-            if (spelerY > 600) {
+            if (spelerY > 560) {
             
             spelerSpringt = false;
             
