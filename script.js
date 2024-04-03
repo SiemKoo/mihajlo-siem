@@ -39,15 +39,15 @@ let zwaartekracht = 0.9;
 var beweegAlles = function() {
   // speler
 
-  if (keyIsDown(83) && spelerY < 750) { //S
+  if (keyIsDown(83) && spelerY <750) { //S
     spelerY= spelerY+4
     }
 
-    if (keyIsDown(65) && spelerX > 25) { //A
+    if (keyIsDown(65) && spelerX > -60) { //A
       spelerX= spelerX-4
       }
 
-      if (keyIsDown(68) && spelerX < 1255) { //D
+      if (keyIsDown(68) && spelerX < 1180) { //D
         spelerX= spelerX+4
         }
           if (spelerSpringt === false && keyIsDown(87)) { //W
