@@ -19,7 +19,7 @@ const SPELEN = 1;
 const GAMEOVER = 2;
 let spelStatus = SPELEN;
 
-let spelerX = 600; // x-positie van speler
+let spelerX = 700; // x-positie van speler
 let spelerY = 530; // y-positie van speler
 let health = 100;  // health van speler
 
@@ -32,14 +32,15 @@ let objectY = 251;
 let objectX1 = -120;
 let objectY1 = 251;
 
-let img; // plaatje
-let img1;
-let img2;
-let img3;
+let img;  // plaatje
+let img1; // plaatje
+let img2; // plaatje
+let img3; // plaatje
+
 
 let spelerSpringt = false;
 let springSnelheid = 0;
-let springSnelheidStart = 15;
+let springSnelheidStart = 20;
 let zwaartekracht = 0.9;
 
 
@@ -111,6 +112,8 @@ var beweegAlles = function() {
             spelerSpringt = false;
             
             }
+   // speler2
+   
 
   
 };
@@ -154,7 +157,8 @@ var tekenAlles = function() {
 
    image(img3, spelerX1, spelerY1, 200, 200);
 
-  // punten en health
+  // speler2
+
 
 };
 
@@ -182,6 +186,7 @@ function preload() {
   img1 = loadImage ('items/baskethoopr.png');
   img2 = loadImage ('items/baskethoopl.png');
   img3 = loadImage ('players/group-breaking-bad/jessepinkman.png');
+
 }
 
 /**
