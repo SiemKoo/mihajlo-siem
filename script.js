@@ -20,15 +20,25 @@ const GAMEOVER = 2;
 let spelStatus = SPELEN;
 
 let spelerX = 600; // x-positie van speler
-let spelerY = 560; // y-positie van speler
+let spelerY = 530; // y-positie van speler
 let health = 100;  // health van speler
 
+let objectX = 900; 
+let objectY = 251;
+
+let objectX1 = -120;
+let objectY1 = 251;
+
 let img; // plaatje
+let img1;
+let img2;
 
 let spelerSpringt = false;
 let springSnelheid = 0;
 let springSnelheidStart = 15;
 let zwaartekracht = 0.9;
+
+
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
 /* ********************************************* */
@@ -66,7 +76,7 @@ var beweegAlles = function() {
             
             }
             
-            if (spelerY > 560) {
+            if (spelerY > 525) {
             
             spelerSpringt = false;
             
@@ -99,14 +109,21 @@ var tekenAlles = function() {
  rect(0,0,1280,720)
   // vijand
 
-  // kogel
+  // object
+
+  ellipse(1000, 400, 150, 150)
+  image(img1, objectX, objectY, 500, 500);
+  
+
+  // object1
+  image(img2, objectX1, objectY1, 500, 500);
 
   // speler
   // fill("white");
   // rect(spelerX - 25, spelerY - 25, 50, 50);
   // fill("black");
   // ellipse(spelerX, spelerY, 10, 10);
-  image(img, spelerX, spelerY);
+  image(img, spelerX, spelerY, 200, 200);
 
   // punten en health
 
@@ -133,6 +150,8 @@ function setup() {
  */
 function preload() {
   img = loadImage ('players/group-breaking-bad/walterwhite.png');
+  img1 = loadImage ('items/baskethoopr.png');
+  img2 = loadImage ('items/baskethoopl.png');
 }
 
 /**
