@@ -23,6 +23,9 @@ let spelerX = 600; // x-positie van speler
 let spelerY = 530; // y-positie van speler
 let health = 100;  // health van speler
 
+let spelerX1 = 800;
+let spelerY1 = 530;
+
 let objectX = 900; 
 let objectY = 251;
 
@@ -32,6 +35,7 @@ let objectY1 = 251;
 let img; // plaatje
 let img1;
 let img2;
+let img3;
 
 let spelerSpringt = false;
 let springSnelheid = 0;
@@ -49,16 +53,42 @@ let zwaartekracht = 0.9;
 var beweegAlles = function() {
   // speler
 
-  if (keyIsDown(83) && spelerY <750) { //S
-    spelerY= spelerY+4
-    }
-
     if (keyIsDown(65) && spelerX > -60) { //A
       spelerX= spelerX-4
       }
 
       if (keyIsDown(68) && spelerX < 1180) { //D
         spelerX= spelerX+4
+        }
+          if (spelerSpringt === false && keyIsDown(87) && spelerY===721) { //W
+
+            spelerSpringt = true;
+            
+            springSnelheid = springSnelheidStart;
+            
+            }
+            
+            if (spelerSpringt === true && spelerY<720) {
+            
+            spelerY = spelerY - springSnelheid;
+            
+            springSnelheid = springSnelheid - zwaartekracht;
+            
+            }
+            
+            if (spelerY > 800) {
+            
+            spelerSpringt = false;
+            
+            }
+  // speler1
+
+    if (keyIsDown(65) && spelerX1 > -60) { //A
+      spelerX1= spelerX1-4
+      }
+
+      if (keyIsDown(68) && spelerX1 < 1180) { //D
+        spelerX1= spelerX1+4
         }
           if (spelerSpringt === false && keyIsDown(87)) { //W
 
@@ -70,20 +100,19 @@ var beweegAlles = function() {
             
             if (spelerSpringt === true) {
             
-            spelerY = spelerY - springSnelheid;
+            spelerY1 = spelerY1 - springSnelheid;
             
             springSnelheid = springSnelheid - zwaartekracht;
             
             }
             
-            if (spelerY > 525) {
+            if (spelerY1 > 525) {
             
             spelerSpringt = false;
             
             }
-  // vijand
 
-  // kogel
+  
 };
 
 /**
@@ -107,8 +136,7 @@ var tekenAlles = function() {
   // achtergrond
  fill("green")
  rect(0,0,1280,720)
-  // vijand
-
+  
   // object
 
   ellipse(1000, 400, 150, 150)
@@ -119,11 +147,12 @@ var tekenAlles = function() {
   image(img2, objectX1, objectY1, 500, 500);
 
   // speler
-  // fill("white");
-  // rect(spelerX - 25, spelerY - 25, 50, 50);
-  // fill("black");
-  // ellipse(spelerX, spelerY, 10, 10);
+  
   image(img, spelerX, spelerY, 200, 200);
+
+  // speler1
+
+   image(img3, spelerX1, spelerY1, 200, 200);
 
   // punten en health
 
@@ -152,6 +181,7 @@ function preload() {
   img = loadImage ('players/group-breaking-bad/walterwhite.png');
   img1 = loadImage ('items/baskethoopr.png');
   img2 = loadImage ('items/baskethoopl.png');
+  img3 = loadImage ('players/group-breaking-bad/jessepinkman.png');
 }
 
 /**
