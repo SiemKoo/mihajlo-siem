@@ -26,6 +26,10 @@ let health = 100;  // health van speler
 let spelerX1 = 1000;
 let spelerY1 = 530;
 
+let spelerX2 = 500;
+let spelerY2 = 530;
+
+
 let objectX = 900; 
 let objectY = 251;
 
@@ -36,13 +40,17 @@ let img;  // plaatje
 let img1; // plaatje
 let img2; // plaatje
 let img3; // plaatje
-
+let img4; // plaatje
 
 let spelerSpringt = false;
 let springSnelheid = 0;
 let springSnelheidStart = 20;
 let zwaartekracht = 0.9;
 
+let spelerSpringt1 = false;
+let springSnelheid1 = 0;
+let springSnelheidStart1 = 20;
+let zwaartekracht1 = 1.6;
 
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
@@ -113,9 +121,35 @@ var beweegAlles = function() {
             
             }
    // speler2
-   
 
-  
+   if (keyIsDown(65) && spelerX2 > -60) { //A
+    spelerX2= spelerX2-4
+    }
+
+    if (keyIsDown(68) && spelerX2 < 1180) { //D
+      spelerX2= spelerX2+4
+      }
+        if (spelerSpringt1 === false && keyIsDown(87)) { //W
+
+          spelerSpringt1 = true;
+          
+          springSnelheid1 = springSnelheidStart1;
+          
+          }
+          
+          if (spelerSpringt1 === true) {
+          
+          spelerY2 = spelerY2 - springSnelheid1;
+          
+          springSnelheid1 = springSnelheid1 - zwaartekracht1;
+          
+          }
+          
+          if (spelerY2 > 525) {
+          
+          spelerSpringt1 = false;
+
+          }
 };
 
 /**
@@ -155,10 +189,11 @@ var tekenAlles = function() {
 
   // speler1
 
-   image(img3, spelerX1, spelerY1, 200, 200);
+   image(img3, spelerX1, spelerY1, 200, 202);
 
   // speler2
 
+  image(img4, spelerX2, spelerY2, 150, 195);
 
 };
 
@@ -186,6 +221,7 @@ function preload() {
   img1 = loadImage ('items/baskethoopr.png');
   img2 = loadImage ('items/baskethoopl.png');
   img3 = loadImage ('players/group-breaking-bad/jessepinkman.png');
+  img4 = loadImage ('players/group-cartoon/aang.png');
 
 }
 
