@@ -29,6 +29,8 @@ let spelerY1 = 530;
 let spelerX2 = 450;
 let spelerY2 = 530;
 
+let spelerX3 = 200;
+let spelerY3 = 530;
 
 let objectX = 900; 
 let objectY = 251;
@@ -46,6 +48,7 @@ let img2; // plaatje
 let img3; // plaatje
 let img4; // plaatje
 let img5; // plaatje
+let img6; // plaatje
 
 
 let spelerSpringt = false;
@@ -57,6 +60,11 @@ let spelerSpringt1 = false;
 let springSnelheid1 = 0;
 let springSnelheidStart1 = 20;
 let zwaartekracht1 = 1.6;
+
+let spelerSpringt2 = false;
+let springSnelheid2 = 0;
+let springSnelheidStart2 = 20;
+let zwaartekracht2 = 1.6;
 
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
@@ -139,25 +147,53 @@ var beweegAlles = function() {
 
           spelerSpringt1 = true;
           
-          springSnelheid1 = springSnelheidStart1;
+          springSnelheid2 = springSnelheidStart2;
           
           }
           
-          if (spelerSpringt1 === true) {
+          if (spelerSpringt2 === true) {
           
-          spelerY2 = spelerY2 - springSnelheid1;
+          spelerY2 = spelerY2 - springSnelheid2;
           
-          springSnelheid1 = springSnelheid1 - zwaartekracht1;
+          springSnelheid2 = springSnelheid2 - zwaartekracht2;
           
           }
           
           if (spelerY2 > 525) {
           
-          spelerSpringt1 = false;
+          spelerSpringt2 = false;
 
           }
 // speler3
 
+if (keyIsDown(65) && spelerX3 > -60) { //A
+  spelerX3= spelerX3-4
+  }
+
+  if (keyIsDown(68) && spelerX3 < 1180) { //D
+    spelerX3= spelerX3+4
+    }
+      if (spelerSpringt2 === false && keyIsDown(87)) { //W
+
+        spelerSpringt2 = true;
+        
+        springSnelheid1 = springSnelheidStart1;
+        
+        }
+        
+        if (spelerSpringt1 === true) {
+        
+        spelerY3 = spelerY3 - springSnelheid1;
+        
+        springSnelheid1 = springSnelheid1 - zwaartekracht1;
+        
+        }
+        
+        if (spelerY3 > 525) {
+        
+        spelerSpringt1 = false;
+
+        }
 
 
 };
@@ -209,6 +245,10 @@ var tekenAlles = function() {
 
   image(img4, spelerX2, spelerY2, 150, 195);
 
+  //speler3
+
+  image(img6, spelerX3, spelerY3, 250, 195);
+
 };
 
 /* ********************************************* */
@@ -231,12 +271,13 @@ function setup() {
  * deze functie geeft de player een plaatje
  */
 function preload() {
-  img = loadImage ('players/group-breaking-bad/walterwhite.png');
+   img = loadImage ('players/group-breaking-bad/walterwhite.png');
   img1 = loadImage ('items/baskethoopr.png');
   img2 = loadImage ('items/baskethoopl.png');
   img3 = loadImage ('players/group-breaking-bad/jessepinkman.png');
   img4 = loadImage ('players/group-avatar/aang.png');
   img5 = loadImage ('items/basketball.png');
+  img6 = loadImage ('players/group-avatar/sokka.png');
 }
 
 /**
