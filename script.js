@@ -19,11 +19,11 @@ const SPELEN = 1;
 const GAMEOVER = 2;
 let spelStatus = SPELEN;
 
-let spelerX = 700; // x-positie van speler
+ let spelerX = 800; // x-positie van speler
 let spelerY = 530; // y-positie van speler
 let health = 100;  // health van speler
 
-let spelerX1 = 800;
+let spelerX1 = 1000;
 let spelerY1 = 530;
 
 let objectX = 900; 
@@ -54,14 +54,14 @@ let zwaartekracht = 0.9;
 var beweegAlles = function() {
   // speler
 
-    if (keyIsDown(65) && spelerX > -60) { //A
+    if (keyIsDown(37) && spelerX > -60) { //arrow left
       spelerX= spelerX-4
       }
 
-      if (keyIsDown(68) && spelerX < 1180) { //D
+      if (keyIsDown(39) && spelerX < 1180) { //arrow right
         spelerX= spelerX+4
         }
-          if (spelerSpringt === false && keyIsDown(87) && spelerY===721) { //W
+          if (spelerSpringt === false && keyIsDown(38) && spelerY===722) { //arrow up
 
             spelerSpringt = true;
             
@@ -84,14 +84,14 @@ var beweegAlles = function() {
             }
   // speler1
 
-    if (keyIsDown(65) && spelerX1 > -60) { //A
+    if (keyIsDown(37) && spelerX1 > -60) { //arrow left
       spelerX1= spelerX1-4
       }
 
-      if (keyIsDown(68) && spelerX1 < 1180) { //D
+      if (keyIsDown(39) && spelerX1 < 1180) { //arrow right
         spelerX1= spelerX1+4
         }
-          if (spelerSpringt === false && keyIsDown(87)) { //W
+          if (spelerSpringt === false && keyIsDown(38)) { //arrow up
 
             spelerSpringt = true;
             
