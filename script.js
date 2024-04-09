@@ -156,6 +156,10 @@ var beweegAlles = function() {
           spelerSpringt1 = false;
 
           }
+// speler3
+
+
+
 };
 
 /**
