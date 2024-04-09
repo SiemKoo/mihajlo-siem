@@ -26,21 +26,27 @@ let health = 100;  // health van speler
 let spelerX1 = 1000;
 let spelerY1 = 530;
 
-let spelerX2 = 500;
+let spelerX2 = 450;
 let spelerY2 = 530;
 
 
 let objectX = 900; 
 let objectY = 251;
 
+
 let objectX1 = -120;
 let objectY1 = 251;
+
+let objectX2 = 500;
+let objectY2 = 200;
 
 let img;  // plaatje
 let img1; // plaatje
 let img2; // plaatje
 let img3; // plaatje
 let img4; // plaatje
+let img5; // plaatje
+
 
 let spelerSpringt = false;
 let springSnelheid = 0;
@@ -183,6 +189,10 @@ var tekenAlles = function() {
   // object1
   image(img2, objectX1, objectY1, 500, 500);
 
+  // object2
+
+  image(img5, objectX2, objectY2, 400, 300)
+
   // speler
   
   image(img, spelerX, spelerY, 200, 200);
@@ -222,7 +232,7 @@ function preload() {
   img2 = loadImage ('items/baskethoopl.png');
   img3 = loadImage ('players/group-breaking-bad/jessepinkman.png');
   img4 = loadImage ('players/group-cartoon/aang.png');
-
+  img5 = loadImage ('items/basketball.png');
 }
 
 /**
