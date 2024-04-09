@@ -231,7 +231,7 @@ function preload() {
   img1 = loadImage ('items/baskethoopr.png');
   img2 = loadImage ('items/baskethoopl.png');
   img3 = loadImage ('players/group-breaking-bad/jessepinkman.png');
-  img4 = loadImage ('players/group-cartoon/aang.png');
+  img4 = loadImage ('players/group-avatar/aang.png');
   img5 = loadImage ('items/basketball.png');
 }
 
