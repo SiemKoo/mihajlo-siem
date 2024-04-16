@@ -59,12 +59,12 @@ let zwaartekracht = 0.9;
 let spelerSpringt1 = false;
 let springSnelheid1 = 0;
 let springSnelheidStart1 = 20;
-let zwaartekracht1 = 0.9;
+let zwaartekracht1 = 1.8;
 
 let spelerSpringt2 = false;
 let springSnelheid2 = 0;
 let springSnelheidStart2 = 20;
-let zwaartekracht2 = 0.9;
+let zwaartekracht2 = 1.8;
 
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
@@ -143,7 +143,7 @@ var beweegAlles = function() {
     if (keyIsDown(68) && spelerX2 < 1180) { //D
       spelerX2= spelerX2+4
       }
-        if (spelerSpringt1 === false && keyIsDown(87) &&) { //W
+        if (spelerSpringt1 === false && keyIsDown(87)) { //W
 
           spelerSpringt1 = true;
           
@@ -159,7 +159,7 @@ var beweegAlles = function() {
           
           }
           
-          if (spelerY2 > 800) {
+          if (spelerY2 > 525) {
           
           spelerSpringt2 = false;
 
@@ -173,7 +173,7 @@ if (keyIsDown(65) && spelerX3 > -60) { //A
   if (keyIsDown(68) && spelerX3 < 1180) { //D
     spelerX3= spelerX3+4
     }
-      if (spelerSpringt2 === false && keyIsDown(87) && spelerY3===722) { //W
+      if (spelerSpringt2 === false && keyIsDown(87)) { //W
 
         spelerSpringt2 = true;
         
@@ -222,7 +222,6 @@ var tekenAlles = function() {
   
   // object
 
-  ellipse(1000, 400, 150, 150)
   image(img1, objectX, objectY, 500, 500);
   
 
@@ -243,7 +242,7 @@ var tekenAlles = function() {
 
   // speler2
 
-  image(img4, spelerX2, spelerY2, 150, 195);
+  image(img4, spelerX2, spelerY2, 150, 200);
 
   //speler3
 
