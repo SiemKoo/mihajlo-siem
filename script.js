@@ -59,12 +59,12 @@ let zwaartekracht = 0.9;
 let spelerSpringt1 = false;
 let springSnelheid1 = 0;
 let springSnelheidStart1 = 20;
-let zwaartekracht1 = 1.6;
+let zwaartekracht1 = 0.9;
 
 let spelerSpringt2 = false;
 let springSnelheid2 = 0;
 let springSnelheidStart2 = 20;
-let zwaartekracht2 = 1.6;
+let zwaartekracht2 = 0.9;
 
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
