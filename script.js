@@ -143,7 +143,7 @@ var beweegAlles = function() {
     if (keyIsDown(68) && spelerX2 < 1180) { //D
       spelerX2= spelerX2+4
       }
-        if (spelerSpringt1 === false && keyIsDown(87)) { //W
+        if (spelerSpringt1 === false && keyIsDown(87) &&) { //W
 
           spelerSpringt1 = true;
           
@@ -159,7 +159,7 @@ var beweegAlles = function() {
           
           }
           
-          if (spelerY2 > 525) {
+          if (spelerY2 > 800) {
           
           spelerSpringt2 = false;
 
@@ -173,7 +173,7 @@ if (keyIsDown(65) && spelerX3 > -60) { //A
   if (keyIsDown(68) && spelerX3 < 1180) { //D
     spelerX3= spelerX3+4
     }
-      if (spelerSpringt2 === false && keyIsDown(87)) { //W
+      if (spelerSpringt2 === false && keyIsDown(87) && spelerY3===722) { //W
 
         spelerSpringt2 = true;
         
