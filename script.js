@@ -19,7 +19,7 @@ const SPELEN = 1;
 const GAMEOVER = 2;
 let spelStatus = SPELEN;
 
- let spelerX = 800; // x-positie van speler
+let spelerX = 800; // x-positie van speler
 let spelerY = 530; // y-positie van speler
 let health = 100;  // health van speler
 
@@ -32,7 +32,7 @@ let spelerY2 = 530;
 let spelerX3 = 200;
 let spelerY3 = 530;
 
-let objectX = 900; 
+let objectX = 900;
 let objectY = 251;
 
 
@@ -73,127 +73,127 @@ let zwaartekracht2 = 1.8;
 /**
  * Updatet globale variabelen met posities van speler, vijanden en kogels
  */
-var beweegAlles = function() {
+var beweegAlles = function () {
   // speler
 
-    if (keyIsDown(37) && spelerX > -60) { //arrow left
-      spelerX= spelerX-4
-      }
+  if (keyIsDown(37) && spelerX > -60) { //arrow left
+    spelerX = spelerX - 4
+  }
 
-      if (keyIsDown(39) && spelerX < 1180) { //arrow right
-        spelerX= spelerX+4
-        }
-          if (spelerSpringt === false && keyIsDown(38) && spelerY===722) { //arrow up
+  if (keyIsDown(39) && spelerX < 1180) { //arrow right
+    spelerX = spelerX + 4
+  }
+  if (spelerSpringt === false && keyIsDown(38) && spelerY === 720) { //arrow up
 
-            spelerSpringt = true;
-            
-            springSnelheid = springSnelheidStart;
-            
-            }
-            
-            if (spelerSpringt === true && spelerY<720) {
-            
-            spelerY = spelerY - springSnelheid;
-            
-            springSnelheid = springSnelheid - zwaartekracht;
-            
-            }
-            
-            if (spelerY > 800) {
-            
-            spelerSpringt = false;
-            
-            }
+    spelerSpringt = true;
+
+    springSnelheid = springSnelheidStart;
+
+  }
+
+  if (spelerSpringt === true && spelerY === 720) {
+
+    spelerY = spelerY - springSnelheid;
+
+    springSnelheid = springSnelheid - zwaartekracht;
+
+  }
+
+  if (spelerY === 720) {
+
+    spelerSpringt = false;
+
+  }
   // speler1
 
-    if (keyIsDown(37) && spelerX1 > -60) { //arrow left
-      spelerX1= spelerX1-4
-      }
+  if (keyIsDown(37) && spelerX1 > -60) { //arrow left
+    spelerX1 = spelerX1 - 4
+  }
 
-      if (keyIsDown(39) && spelerX1 < 1180) { //arrow right
-        spelerX1= spelerX1+4
-        }
-          if (spelerSpringt === false && keyIsDown(38)) { //arrow up
+  if (keyIsDown(39) && spelerX1 < 1180) { //arrow right
+    spelerX1 = spelerX1 + 4
+  }
+  if (spelerSpringt === false && keyIsDown(38)) { //arrow up
 
-            spelerSpringt = true;
-            
-            springSnelheid = springSnelheidStart;
-            
-            }
-            
-            if (spelerSpringt === true) {
-            
-            spelerY1 = spelerY1 - springSnelheid;
-            
-            springSnelheid = springSnelheid - zwaartekracht;
-            
-            }
-            
-            if (spelerY1 > 525) {
-            
-            spelerSpringt = false;
-            
-            }
-   // speler2
+    spelerSpringt = true;
 
-   if (keyIsDown(65) && spelerX2 > -60) { //A
-    spelerX2= spelerX2-4
-    }
+    springSnelheid = springSnelheidStart;
 
-    if (keyIsDown(68) && spelerX2 < 1180) { //D
-      spelerX2= spelerX2+4
-      }
-        if (spelerSpringt1 === false && keyIsDown(87)) { //W
+  }
 
-          spelerSpringt1 = true;
-          
-          springSnelheid2 = springSnelheidStart2;
-          
-          }
-          
-          if (spelerSpringt2 === true) {
-          
-          spelerY2 = spelerY2 - springSnelheid2;
-          
-          springSnelheid2 = springSnelheid2 - zwaartekracht2;
-          
-          }
-          
-          if (spelerY2 > 525) {
-          
-          spelerSpringt2 = false;
+  if (spelerSpringt === true) {
 
-          }
-// speler3
+    spelerY1 = spelerY1 - springSnelheid;
 
-if (keyIsDown(65) && spelerX3 > -60) { //A
-  spelerX3= spelerX3-4
+    springSnelheid = springSnelheid - zwaartekracht;
+
+  }
+
+  if (spelerY1 === 750) {
+
+    spelerSpringt = false;
+
+  }
+  // speler2
+
+  if (keyIsDown(65) && spelerX2 > -60) { //A
+    spelerX2 = spelerX2 - 4
+  }
+
+  if (keyIsDown(68) && spelerX2 < 1180) { //D
+    spelerX2 = spelerX2 + 4
+  }
+  if (spelerSpringt1 === false && keyIsDown(87)) { //W
+
+    spelerSpringt1 = true;
+
+    springSnelheid2 = springSnelheidStart2;
+
+  }
+
+  if (spelerSpringt2 === true) {
+
+    spelerY2 = spelerY2 - springSnelheid2;
+
+    springSnelheid2 = springSnelheid2 - zwaartekracht2;
+
+  }
+
+  if (spelerY2 === 750) {
+
+    spelerSpringt2 = false;
+
+  }
+  // speler3
+
+  if (keyIsDown(65) && spelerX3 > -60) { //A
+    spelerX3 = spelerX3 - 4
   }
 
   if (keyIsDown(68) && spelerX3 < 1180) { //D
-    spelerX3= spelerX3+4
-    }
-      if (spelerSpringt2 === false && keyIsDown(87)) { //W
+    spelerX3 = spelerX3 + 4
+  }
+  if (spelerSpringt2 === false && keyIsDown(87)) { //W
 
-        spelerSpringt2 = true;
-        
-        springSnelheid1 = springSnelheidStart1;
-        
-        }
-        
-        if (spelerSpringt1 === true) {
-        
-        spelerY3 = spelerY3 - springSnelheid1;
-        
-        springSnelheid1 = springSnelheid1 - zwaartekracht1;
-        
-        }
-        
-        if (spelerY3 > 525) {
-        
-        spelerSpringt1 = false;
+    spelerSpringt2 = true;
 
-        }
+    springSnelheid1 = springSnelheidStart1;
+
+  }
+
+  if (spelerSpringt1 === true) {
+
+    spelerY3 = spelerY3 - springSnelheid1;
+
+    springSnelheid1 = springSnelheid1 - zwaartekracht1;
+
+  }
+
+  if (spelerY3 > 525) {
+
+    spelerSpringt1 = false;
+
+  }
 
 
 };
@@ -203,7 +203,7 @@ if (keyIsDown(65) && spelerX3 > -60) { //A
  * Verwijdert neergeschoten dingen
  * Updatet globale variabelen punten en health
  */
-var verwerkBotsing = function() {
+var verwerkBotsing = function () {
   // botsing speler tegen vijand
 
   // botsing kogel tegen vijand
@@ -215,15 +215,15 @@ var verwerkBotsing = function() {
 /**
  * Tekent spelscherm
  */
-var tekenAlles = function() {
+var tekenAlles = function () {
   // achtergrond
- fill("green")
- rect(0,0,1280,720)
-  
+  fill("green")
+  rect(0, 0, 1280, 720)
+
   // object
 
   image(img1, objectX, objectY, 500, 500);
-  
+
 
   // object1
   image(img2, objectX1, objectY1, 500, 500);
@@ -233,12 +233,12 @@ var tekenAlles = function() {
   image(img5, objectX2, objectY2, 400, 300)
 
   // speler
-  
+
   image(img, spelerX, spelerY, 200, 200);
 
   // speler1
 
-   image(img3, spelerX1, spelerY1, 200, 202);
+  image(img3, spelerX1, spelerY1, 200, 202);
 
   // speler2
 
@@ -270,13 +270,13 @@ function setup() {
  * deze functie geeft de player een plaatje
  */
 function preload() {
-   img = loadImage ('players/group-breaking-bad/walterwhite.png');
-  img1 = loadImage ('items/baskethoopr.png');
-  img2 = loadImage ('items/baskethoopl.png');
-  img3 = loadImage ('players/group-breaking-bad/jessepinkman.png');
-  img4 = loadImage ('players/group-avatar/aang.png');
-  img5 = loadImage ('items/basketball.png');
-  img6 = loadImage ('players/group-avatar/sokka.png');
+  img = loadImage('players/group-breaking-bad/walterwhite.png');
+  img1 = loadImage('items/baskethoopr.png');
+  img2 = loadImage('items/baskethoopl.png');
+  img3 = loadImage('players/group-breaking-bad/jessepinkman.png');
+  img4 = loadImage('players/group-avatar/aang.png');
+  img5 = loadImage('items/basketball.png');
+  img6 = loadImage('players/group-avatar/sokka.png');
 }
 
 /**
