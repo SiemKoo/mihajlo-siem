@@ -234,7 +234,7 @@ var tekenAlles = function () {
 
   // speler
 
-  image(img, spelerX, spelerY, 200, 200);
+  image(img, spelerX1- 200, spelerY1, 200, 200);
 
   // speler1
 
@@ -246,7 +246,7 @@ var tekenAlles = function () {
 
   //speler3
 
-  image(img6, spelerX3, spelerY3, 250, 195);
+  image(img6, spelerX2+200, spelerY2, 250, 195);
 
 };
 
