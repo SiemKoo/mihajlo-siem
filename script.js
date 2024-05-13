@@ -19,17 +19,17 @@ const SPELEN = 1;
 const GAMEOVER = 2;
 let spelStatus = SPELEN;
 
-let spelerX = 800; // x-positie van speler
+let spelerX = 700; // x-positie van speler
 let spelerY = 530; // y-positie van speler
 let health = 100;  // health van speler
 
-let spelerX1 = 1000;
+let spelerX1 = 900;
 let spelerY1 = 530;
 
-let spelerX2 = 450;
+let spelerX2 = 350;
 let spelerY2 = 530;
 
-let spelerX3 = 200;
+let spelerX3 = 150;
 let spelerY3 = 530;
 
 let objectX = 900;
@@ -39,8 +39,8 @@ let objectY = 251;
 let objectX1 = -120;
 let objectY1 = 251;
 
-let objectX2 = 500;
-let objectY2 = 200;
+let objectX2 = 425;
+let objectY2 = 150;
 
 let img;  // plaatje
 let img1; // plaatje
@@ -54,17 +54,14 @@ let img6; // plaatje
 let spelerSpringt = false;
 let springSnelheid = 0;
 let springSnelheidStart = 20;
-let zwaartekracht = 0.9;
+let zwaartekracht = 1.8;
 
 let spelerSpringt1 = false;
 let springSnelheid1 = 0;
 let springSnelheidStart1 = 20;
 let zwaartekracht1 = 1.8;
 
-let spelerSpringt2 = false;
-let springSnelheid2 = 0;
-let springSnelheidStart2 = 20;
-let zwaartekracht2 = 1.8;
+
 
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
@@ -74,127 +71,74 @@ let zwaartekracht2 = 1.8;
  * Updatet globale variabelen met posities van speler, vijanden en kogels
  */
 var beweegAlles = function () {
-  // speler
+  // speler & speler1
 
   if (keyIsDown(37) && spelerX > -60) { //arrow left
-    spelerX = spelerX - 4
+    spelerX = spelerX - 4;
+    spelerX1 = spelerX1 - 4;
   }
 
   if (keyIsDown(39) && spelerX < 1180) { //arrow right
-    spelerX = spelerX + 4
-  }
-  if (spelerSpringt === false && keyIsDown(38) && spelerY === 720) { //arrow up
-
-    spelerSpringt = true;
-
-    springSnelheid = springSnelheidStart;
-
-  }
-
-  if (spelerSpringt === true && spelerY === 720) {
-
-    spelerY = spelerY - springSnelheid;
-
-    springSnelheid = springSnelheid - zwaartekracht;
-
-  }
-
-  if (spelerY === 720) {
-
-    spelerSpringt = false;
-
-  }
-  // speler1
-
-  if (keyIsDown(37) && spelerX1 > -60) { //arrow left
-    spelerX1 = spelerX1 - 4
-  }
-
-  if (keyIsDown(39) && spelerX1 < 1180) { //arrow right
-    spelerX1 = spelerX1 + 4
+    spelerX = spelerX + 4;
+    spelerX1 = spelerX1 + 4;
   }
   if (spelerSpringt === false && keyIsDown(38)) { //arrow up
 
     spelerSpringt = true;
-
+    
     springSnelheid = springSnelheidStart;
-
-  }
-
-  if (spelerSpringt === true) {
-
+    
+    }
+    
+    if (spelerSpringt === true && (spelerY<720 || spelerY1<720) ) {
+    
+    spelerY = spelerY - springSnelheid;
     spelerY1 = spelerY1 - springSnelheid;
-
+    
     springSnelheid = springSnelheid - zwaartekracht;
+    
+    }
 
-  }
+    if (spelerY > 525  || spelerY1 > 525) {
+    
+      spelerSpringt = false;
+      
+      } 
 
-  if (spelerY1 === 750) {
-
-    spelerSpringt = false;
-
-  }
-  // speler2
+  //speler2
 
   if (keyIsDown(65) && spelerX2 > -60) { //A
-    spelerX2 = spelerX2 - 4
+    spelerX2 = spelerX2 - 4;
+    spelerX3 = spelerX3 - 4;
   }
 
   if (keyIsDown(68) && spelerX2 < 1180) { //D
-    spelerX2 = spelerX2 + 4
-  }
-  if (spelerSpringt1 === false && keyIsDown(87)) { //W
-
-    spelerSpringt1 = true;
-
-    springSnelheid2 = springSnelheidStart2;
+    spelerX2 = spelerX2 + 4;
+    spelerX3 = spelerX3 + 4;
 
   }
+if (spelerSpringt1 === false && keyIsDown(87)) { //arrow up
 
-  if (spelerSpringt2 === true) {
-
-    spelerY2 = spelerY2 - springSnelheid2;
-
-    springSnelheid2 = springSnelheid2 - zwaartekracht2;
-
+  spelerSpringt1 = true;
+  
+  springSnelheid1 = springSnelheidStart1;
+  
   }
-
-  if (spelerY2 === 750) {
-
-    spelerSpringt2 = false;
-
+  
+  if (spelerSpringt1 === true && (spelerY2<720 || spelerY3<720)) {
+  
+  spelerY2 = spelerY2 - springSnelheid1;
+  spelerY3 = spelerY3 - springSnelheid1;
+  
+  springSnelheid1 = springSnelheid1 - zwaartekracht1;
+  
   }
-  // speler3
-
-  if (keyIsDown(65) && spelerX3 > -60) { //A
-    spelerX3 = spelerX3 - 4
+  
+  if (spelerY2 > 525 || spelerY3 > 525) {
+  
+  spelerSpringt1 = false;
+  
   }
-
-  if (keyIsDown(68) && spelerX3 < 1180) { //D
-    spelerX3 = spelerX3 + 4
-  }
-  if (spelerSpringt2 === false && keyIsDown(87)) { //W
-
-    spelerSpringt2 = true;
-
-    springSnelheid1 = springSnelheidStart1;
-
-  }
-
-  if (spelerSpringt1 === true) {
-
-    spelerY3 = spelerY3 - springSnelheid1;
-
-    springSnelheid1 = springSnelheid1 - zwaartekracht1;
-
-  }
-
-  if (spelerY3 > 525) {
-
-    spelerSpringt1 = false;
-
-  }
-
 
 };
 
@@ -230,23 +174,23 @@ var tekenAlles = function () {
 
   // object2
 
-  image(img5, objectX2, objectY2, 400, 300)
+  image(img5, objectX2, objectY2, 400, 300);
 
   // speler
 
-  image(img, spelerX1- 200, spelerY1, 200, 200);
+  image(img, spelerX, spelerY, 200, 200);
 
   // speler1
 
-  image(img3, spelerX1, spelerY1, 200, 202);
+  image(img3, spelerX1, spelerY1, 200, 200);
 
   // speler2
 
-  image(img4, spelerX2, spelerY2, 150, 200);
+  image(img4, spelerX2, spelerY2, 200, 200);
 
   //speler3
 
-  image(img6, spelerX2+200, spelerY2, 250, 195);
+  image(img6, spelerX3, spelerY3, 200, 200);
 
 };
 
