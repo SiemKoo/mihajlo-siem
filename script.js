@@ -43,6 +43,7 @@ let objectY1 = 251;
 let objectX2 = 425;
 let objectY2 = 150;
 
+
 let img;  // plaatje
 let img1; // plaatje
 let img2; // plaatje
@@ -50,6 +51,7 @@ let img3; // plaatje
 let img4; // plaatje
 let img5; // plaatje
 let img6; // plaatje
+let img7; // plaatje
 
 
 let spelerSpringt = false;
@@ -162,7 +164,8 @@ var verwerkBotsing = function () {
  */
 var tekenAlles = function () {
   // achtergrond
-  fill("green")
+  image(img7, 1280, 720);
+  
   rect(0, 0, 1280, 720)
 
   // object
@@ -222,6 +225,7 @@ function preload() {
   img4 = loadImage('players/group-avatar/aang.png');
   img5 = loadImage('items/basketball.png');
   img6 = loadImage('players/group-avatar/sokka.png');
+  img7 = loadImage('basketballcourt.png');
 }
 
 /**
@@ -236,7 +240,7 @@ function draw() {
     fill('white');
     textSize(24);
     textAlign(CENTER, CENTER);
-    text("Welkom bij het spel Basket-Multiverse.\n\ Gebruik de knoppen W, A en D toetsen om speler en speler 1 te besturen. \n\ Gebruik de knoppen pijltje omhoog, linker pijltje en rechter pijltje om speler 2 en speler 3 te besturen", width / 2, height / 2);
+    text("Welkom bij het spel Basket-Multiverse.\n\ Gebruik de knoppen W, A en D toetsen om speler en speler 1 te besturen. \n\ Gebruik de knoppen pijltje omhoog, linker pijltje en rechter pijltje om speler 2 en speler 3 te besturen. \n\ Klik op de ENTER knop om verder te gaan", width / 2, height / 2);
 
 
     // start het spel als de ENTER toets wordt geklikt
