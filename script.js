@@ -15,9 +15,10 @@
 /* ********************************************* */
 /* globale variabelen die je gebruikt in je gamwe */
 /* ********************************************* */
+const STARTSCHERM = 0;
 const SPELEN = 1;
 const GAMEOVER = 2;
-let spelStatus = SPELEN;
+let spelStatus = STARTSCHERM;
 
 let spelerX = 700; // x-positie van speler
 let spelerY = 530; // y-positie van speler
@@ -25,7 +26,7 @@ let health = 100;  // health van speler
 
 let spelerX1 = 900;
 let spelerY1 = 530;
-
+ 
 let spelerX2 = 350;
 let spelerY2 = 530;
 
@@ -105,7 +106,7 @@ var beweegAlles = function () {
       
       } 
 
-  //speler2
+  //speler2 & 3
 
   if (keyIsDown(65) && spelerX2 > -60) { //A
     spelerX2 = spelerX2 - 4;
@@ -229,15 +230,36 @@ function preload() {
  * uitgevoerd door de p5 library, nadat de setup functie klaar is
  */
 function draw() {
-  if (spelStatus === SPELEN) {
+  if (spelStatus === STARTSCHERM) {
+    // toon STARTSCHERM met uitleg
+    background('green');
+    fill('white');
+    textSize(24);
+    textAlign(CENTER, CENTER);
+    text("Welkom bij het spel Basket-Multiverse.\n\ Gebruik de knoppen W, A en D toetsen om speler en speler 1 te besturen. \n\ Gebruik de knoppen pijltje omhoog, linker pijltje en rechter pijltje om speler 2 en speler 3 te besturen", width / 2, height / 2);
+
+
+    // start het spel als de ENTER toets wordt geklikt
+
+    if (keyIsPressed && keyCode === ENTER) {
+      spelStatus = SPELEN;
+    }
+  } else if (spelStatus === SPELEN) {
+    // speelscherm
     beweegAlles();
     verwerkBotsing();
     tekenAlles();
-    if (health <= 0) {
-      spelStatus = GAMEOVER;
+  } else if (spelStatus === GAMEOVER) {
+    // GAME OVER SCHERM
+    tekenScorebord();
+    fill('white');
+    textSize(32);
+    textAlign (CENTER, CENTER);
+    Text("Game Over!!", width /2, height / 2);
+
+    // Start het spel opnieuw als de Enter knop wordt geklikt
+    if ( keyIsPressed && keyCode === ENTER) {
+      resetGame();
     }
-  }
-  if (spelStatus === GAMEOVER) {
-    // teken game-over scherm
-  }
+ }
 }
