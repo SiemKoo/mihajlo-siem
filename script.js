@@ -40,7 +40,7 @@ let objectY = 251;
 let objectX1 = -120;
 let objectY1 = 251;
 
-let objectX2 = 425;
+let objectX2 = 580;
 let objectY2 = 150;
 
 
@@ -63,8 +63,10 @@ let spelerSpringt1 = false;
 let springSnelheid1 = 0;
 let springSnelheidStart1 = 20;
 let zwaartekracht1 = 1.8;
-
-
+ 
+let versnelling = 0.2;
+var val;
+var bounce;
 
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
@@ -142,7 +144,25 @@ if (spelerSpringt1 === false && keyIsDown(87)) { //arrow up
   spelerSpringt1 = false;
   
   }
+  // object2
+if ( objectY2 > 0) {
+ val = true;
+ bounce = false;
+}
+if (val === true) {
+  objectY2 = objectY2 +1 +versnelling;
+ versnelling = versnelling + 0.2;
+}
+if ( objectY2 > 650) {
+val = false;
+bounce = true;
+  
 
+}
+if (bounce === true) {
+  objectY2 = objectY2 - 1 -versnelling;
+  versnelling = versnelling + 1;
+}
 };
 
 /**
@@ -178,7 +198,7 @@ var tekenAlles = function () {
 
   // object2
 
-  image(img5, objectX2, objectY2, 400, 300);
+  image(img5, objectX2, objectY2, 70, 70);
 
   // speler
 
