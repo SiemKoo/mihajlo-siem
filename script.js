@@ -187,8 +187,8 @@ var verwerkBotsing = function () {
 var tekenAlles = function () {
   // achtergrond
   
-  
-  rect(0, 0, 1280, 720)
+  image( img7, 0, 0, 1280, 720);
+  //rect(0, 0, 1280, 720)
 
   // object
 
