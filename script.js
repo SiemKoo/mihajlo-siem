@@ -153,16 +153,18 @@ if (val === true) {
   objectY2 = objectY2 +1 +versnelling;
  versnelling = versnelling + 0.2;
 }
-if ( objectY2 > 650) {
+if ( objectY2 > 680) {
 val = false;
 bounce = true;
   
 
 }
 if (bounce === true) {
-  objectY2 = objectY2 - 1 -versnelling;
-  versnelling = versnelling + 1;
+  objectY2 = objectY2 - 3 -versnelling;
+  versnelling = versnelling + 2;
 }
+
+
 };
 
 /**
@@ -184,7 +186,7 @@ var verwerkBotsing = function () {
  */
 var tekenAlles = function () {
   // achtergrond
-  image(img7, 1280, 720);
+  
   
   rect(0, 0, 1280, 720)
 
