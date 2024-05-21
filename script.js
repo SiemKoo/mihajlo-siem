@@ -21,27 +21,27 @@ const GAMEOVER = 2;
 let spelStatus = STARTSCHERM;
 
 let spelerX = 700; // x-positie van speler
-let spelerY = 530; // y-positie van speler
+let spelerY = 451; // y-positie van speler
 let health = 100;  // health van speler
 
 let spelerX1 = 900;
-let spelerY1 = 530;
+let spelerY1 = 451;
  
 let spelerX2 = 350;
-let spelerY2 = 530;
+let spelerY2 = 451;
 
 let spelerX3 = 150;
-let spelerY3 = 530;
+let spelerY3 = 451;
 
 let objectX = 900;
-let objectY = 251;
+let objectY = 170;
 
 
 let objectX1 = -120;
-let objectY1 = 251;
+let objectY1 = 170;
 
-let objectX2 = 580;
-let objectY2 = 150;
+let objectX2 = 610;
+let objectY2 = 200;
 
 
 let img;  // plaatje
@@ -65,7 +65,7 @@ let springSnelheidStart1 = 20;
 let zwaartekracht1 = 1.8;
  
 let versnelling = 0.2;
-var val;
+var val = true;
 var bounce;
 
 /* ********************************************* */
@@ -145,15 +145,20 @@ if (spelerSpringt1 === false && keyIsDown(87)) { //arrow up
   
   }
   // object2
-if ( objectY2 > 0) {
+if ( objectY2 < 0 ) {
  val = true;
  bounce = false;
 }
 if (val === true) {
   objectY2 = objectY2 +1 +versnelling;
  versnelling = versnelling + 0.2;
+ if(versnelling > 5) {
+  versnelling = 5;
 }
-if ( objectY2 > 680) {
+}
+
+
+if ( objectY2 > 600) {
 val = false;
 bounce = true;
   
@@ -162,6 +167,9 @@ bounce = true;
 if (bounce === true) {
   objectY2 = objectY2 - 3 -versnelling;
   versnelling = versnelling + 2;
+  if(versnelling > 5) {
+    versnelling = 5;
+  }
 }
 
 
