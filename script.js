@@ -68,6 +68,8 @@ let zwaartekracht1 = 1.8;
 let versnelling = 0.2;
 var val = true;
 var bounce;
+var bounceR = true;
+var bounceL;
 
 
 /* ********************************************* */
@@ -106,7 +108,7 @@ var beweegAlles = function () {
     
     }
 
-    if (spelerY > 525  || spelerY1 > 525) {
+    if (spelerY > 451  || spelerY1 > 451) {
     
       spelerSpringt = false;
       
@@ -141,7 +143,7 @@ if (spelerSpringt1 === false && keyIsDown(87)) { //arrow up
   
   }
   
-  if (spelerY2 > 525 || spelerY3 > 525) {
+  if (spelerY2 > 451 || spelerY3 > 451) {
   
   spelerSpringt1 = false;
   
@@ -173,11 +175,30 @@ if (bounce === true) {
     versnelling = 5;
   }
 }
-if ( objectX2 > 0) {
+if ( objectX2 < 0) {
+  bounceR = true;
+  bounceL = false;
+}
+if (bounceR === true) {
   objectX2 = objectX2 +1 +versnelling;
- versnelling = versnelling + 0.2;
+  versnelling = versnelling + 0.2;
+  if(versnelling > 5) {
+   versnelling = 5;
+ }
 }
 
+if (objectX2 > 1200) {
+  bounceR = false;
+  bounceL = true;
+}
+
+if (bounceL === true) {
+  objectX2 = objectX2 - 3 -versnelling;
+  versnelling = versnelling + 2;
+  if(versnelling > 5) {
+    versnelling = 5;
+  }
+}
 
 
 
@@ -275,7 +296,8 @@ function preload() {
 function draw() {
   if (spelStatus === STARTSCHERM) {
     // toon STARTSCHERM met uitleg
-    background('green');
+    //background('green')
+    image( img8, 0, 0, 1400, 720);
     fill('white');
     textSize(24);
     textAlign(CENTER, CENTER);
