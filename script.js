@@ -15,6 +15,9 @@
 /* ********************************************* */
 /* globale variabelen die je gebruikt in je gamwe */
 /* ********************************************* */
+const canvas = document.getElementById("myCanvas");
+const ctx = canvas.getContext("2d");
+const ballRadius = 10;
 const STARTSCHERM = 0;
 const SPELEN = 1;
 const GAMEOVER = 2;
@@ -40,9 +43,11 @@ let objectY = 170;
 let objectX1 = -120;
 let objectY1 = 170;
 
-let objectX2 = 610;
-let objectY2 = 200;
+let objectX2 = canvas.width / 2;
+let objectY2 = canvas.height - 30;
 
+let dx = 2;
+let dy = -2;
 
 let img;  // plaatje
 let img1; // plaatje
@@ -67,6 +72,7 @@ let zwaartekracht1 = 1.8;
 let versnelling = 0.2;
 var val = true;
 var bounce;
+
 
 /* ********************************************* */
 /* functies die je gebruikt in je game           */
@@ -171,6 +177,7 @@ if (bounce === true) {
     versnelling = 5;
   }
 }
+
 
 };
 
