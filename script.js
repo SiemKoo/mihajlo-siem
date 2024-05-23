@@ -15,9 +15,6 @@
 /* ********************************************* */
 /* globale variabelen die je gebruikt in je gamwe */
 /* ********************************************* */
-const canvas = document.getElementById("myCanvas");
-const ctx = canvas.getContext("2d");
-const ballRadius = 10;
 const STARTSCHERM = 0;
 const SPELEN = 1;
 const GAMEOVER = 2;
@@ -43,11 +40,9 @@ let objectY = 170;
 let objectX1 = -120;
 let objectY1 = 170;
 
-let objectX2 = canvas.width / 2;
-let objectY2 = canvas.height - 30;
+let objectX2 = 610;
+let objectY2 = 200;
 
-let dx = 2;
-let dy = -2;
 
 let img;  // plaatje
 let img1; // plaatje
@@ -57,6 +52,7 @@ let img4; // plaatje
 let img5; // plaatje
 let img6; // plaatje
 let img7; // plaatje
+let img8; // plaatje
 
 
 let spelerSpringt = false;
@@ -177,6 +173,12 @@ if (bounce === true) {
     versnelling = 5;
   }
 }
+if ( objectX2 > 0) {
+  objectX2 = objectX2 +1 +versnelling;
+ versnelling = versnelling + 0.2;
+}
+
+
 
 
 };
@@ -262,6 +264,7 @@ function preload() {
   img5 = loadImage('items/basketball.png');
   img6 = loadImage('players/group-avatar/sokka.png');
   img7 = loadImage('basketballcourt.png');
+  img8 = loadImage('beginfoto.png');
 }
 
 /**
