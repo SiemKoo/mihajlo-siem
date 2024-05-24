@@ -263,7 +263,7 @@ var tekenAlles = function () {
   textAlign(LEFT, TOP);
   text(tegenpartijScore + ' - '+ score, 620, 40);
 
-  if ( tegenpartijScore === 1 || score === 1) {
+  if ( tegenpartijScore === 3 || score === 3) {
 
   spelStatus = GAMEOVER;
   }
@@ -356,11 +356,10 @@ function draw() {
     // GAME OVER SCHERM
     image( img9, 0, 0, 1280, 720);
     fill('black');
-    background(200)
     textStyle(BOLD);
-    textSize(32);
+    textSize(24);
     textAlign (CENTER, CENTER);
-    text(" Klik nu op de knop ENTER om opnieuw te spelen",  width / 2, 300);
+    text(" Klik nu op de knop ENTER om opnieuw te spelen",  width / 2, 15);
     
     // Start het spel opnieuw als de Enter knop wordt geklikt
     if ( keyIsPressed && keyCode === ENTER) {
