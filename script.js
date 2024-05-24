@@ -339,8 +339,8 @@ function draw() {
     fill('white');
     textSize(24);
     textAlign(CENTER, CENTER);
-    text("Welkom bij het spel Basket-Multiverse.\n\ Gebruik de knoppen W, A en D toetsen om speler en speler 1 te besturen. \n\ Gebruik de knoppen pijltje omhoog, linker pijltje en rechter pijltje om speler 2 en speler 3 te besturen. \n\ Klik op de ENTER knop om verder te gaan", width / 2, 560);
-
+    text("Welkom bij het spel Basket-Multiverse.\n\ Gebruik de knoppen W, A en D toetsen om speler en speler 1 te besturen. \n\ Gebruik de knoppen pijltje omhoog, linker pijltje en rechter pijltje om speler 2 en speler 3 te besturen. \n\ Klik op de ENTER knop om verder te gaan.\n\ MADE BY Mihajlo Vujic & Siem Koolhaas", width / 2, 560);
+    
 
     // start het spel als de ENTER toets wordt geklikt
 
