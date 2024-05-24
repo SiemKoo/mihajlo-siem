@@ -40,8 +40,7 @@ let objectY = 170;
 let objectX1 = -120;
 let objectY1 = 170;
 
-let objectX2 = 610;
-let objectY2 = 200;
+
 
 
 let img;  // plaatje
@@ -53,6 +52,7 @@ let img5; // plaatje
 let img6; // plaatje
 let img7; // plaatje
 let img8; // plaatje
+let img9; // plaatje
 
 
 let spelerSpringt = false;
@@ -66,10 +66,10 @@ let springSnelheidStart1 = 20;
 let zwaartekracht1 = 1.8;
  
 let versnelling = 0.2;
-var val = true;
-var bounce;
-var bounceR = true;
-var bounceL;
+let val = true;
+let bounce;
+let bounceR = true;
+let bounceL;
 
 
 /* ********************************************* */
@@ -256,6 +256,42 @@ var tekenAlles = function () {
 
   image(img6, spelerX3, spelerY3, 36, 155);
 
+
+  // Toon de score
+  fill('white');
+  textSize(32);
+  textAlign(LEFT, TOP);
+  text(tegenpartijScore + ' - '+ score, 620, 40);
+
+  if ( tegenpartijScore === 1 || score === 1) {
+
+  spelStatus = GAMEOVER;
+  }
+
+
+
+  // Toon "BREAKING BAD SCOOORT!" melding voor een korte tijd
+  if (showPuntMessage) {
+    fill('yellow');
+    textSize(48);
+    textAlign(CENTER, CENTER);
+    text("BREAKING BAD SCOOORT!", width / 2, height / 2);
+    if (millis() - messageTimer > 2000) {
+      showPuntMessage = false;
+    }
+  }
+
+  // Toon "AVATAR SCOOORT!" melding voor een korte tijd
+  if (showTegenpartijPuntMessage) {
+    fill('red');
+    textSize(48);
+    textAlign(CENTER, CENTER);
+    text("AVATAR SCOOORT!", width / 2, height / 2 + 60);
+    if (millis() - messageTimer > 2000) {
+      showTegenpartijPuntMessage = false;
+    }
+  }
+
 };
 
 /* ********************************************* */
@@ -287,6 +323,7 @@ function preload() {
   img6 = loadImage('players/group-avatar/sokka.png');
   img7 = loadImage('basketballcourt.png');
   img8 = loadImage('beginfoto.png');
+  img9 = loadImage('eindfoto.png');
 }
 
 /**
@@ -298,11 +335,11 @@ function draw() {
   if (spelStatus === STARTSCHERM) {
     // toon STARTSCHERM met uitleg
     //background('green')
-    image( img8, 0, 0, 1400, 720);
+    image( img8, 0, 0, 1280, 720);
     fill('white');
     textSize(24);
     textAlign(CENTER, CENTER);
-    text("Welkom bij het spel Basket-Multiverse.\n\ Gebruik de knoppen W, A en D toetsen om speler en speler 1 te besturen. \n\ Gebruik de knoppen pijltje omhoog, linker pijltje en rechter pijltje om speler 2 en speler 3 te besturen. \n\ Klik op de ENTER knop om verder te gaan", width / 2, height / 2);
+    text("Welkom bij het spel Basket-Multiverse.\n\ Gebruik de knoppen W, A en D toetsen om speler en speler 1 te besturen. \n\ Gebruik de knoppen pijltje omhoog, linker pijltje en rechter pijltje om speler 2 en speler 3 te besturen. \n\ Klik op de ENTER knop om verder te gaan", width / 2, 560);
 
 
     // start het spel als de ENTER toets wordt geklikt
@@ -317,15 +354,17 @@ function draw() {
     tekenAlles();
   } else if (spelStatus === GAMEOVER) {
     // GAME OVER SCHERM
-    tekenScorebord();
-    fill('white');
+    image( img9, 0, 0, 1280, 720);
+    fill('black');
+    background(200)
+    textStyle(BOLD);
     textSize(32);
     textAlign (CENTER, CENTER);
-    Text("Game Over!!", width /2, height / 2);
-
+    text(" Klik nu op de knop ENTER om opnieuw te spelen",  width / 2, 300);
+    
     // Start het spel opnieuw als de Enter knop wordt geklikt
     if ( keyIsPressed && keyCode === ENTER) {
-      resetGame();
+     resetGame();
     }
  }
 }
@@ -357,6 +396,20 @@ var verwerkBotsing = function () {
     bounceR = !bounceR;
     bounceL = !bounceL;
   }
+
+  // Check of de bal door het object gaat
+  if (checkPunt(objectX2, objectY2)) {
+    score++;
+    showPuntMessage = true;
+    messageTimer = millis(); // start de timer
+    resetBalPositie(); // reset de positie van de bal
+  }  
+  else if (checkTegenpartijPunt(objectX2, objectY2)) {
+    tegenpartijScore++;
+    showTegenpartijPuntMessage = true;
+    messageTimer = millis(); // start de timer
+    resetBalPositie(); // reset de positie van de bal
+  }
 };
 
 /**
@@ -382,3 +435,58 @@ function mousePressed() {
   let y = mouseY;
   alert('Coördinaten: (' + x + ', ' + y + ')');
 }
+
+// Nieuwe objectcoördinaten en afmetingen voor het puntentelling object
+let puntObjectX1 = 145;
+let puntObjectY1 = 330;
+let puntObjectX2 = 210;
+let puntObjectY2 = 373;
+
+let tegenpartijObjectX1 = 1070;
+let tegenpartijObjectY1 = 325;
+let tegenpartijObjectX2 = 1130;
+let tegenpartijObjectY2 = 375;
+
+
+let score = 0;
+let tegenpartijScore = 0;
+let showPuntMessage = false;
+let showTegenpartijPuntMessage = false;
+let messageTimer = 0;
+
+// Startpositie van de bal
+let balStartX = 610;
+let balStartY = 200;
+
+// Huidige positie van de bal
+let objectX2 = balStartX;
+let objectY2 = balStartY;
+
+/**
+ * Verplaatst de bal naar de startpositie
+ */
+var resetBalPositie = function () {
+  objectX2 = balStartX;
+  objectY2 = balStartY;
+};
+
+var resetGame = function () {
+  spelStatus = STARTSCHERM;
+  score = 0;
+  tegenpartijScore = 0;
+  resetBalPositie();
+};
+
+/**
+ * Hulpfunctie om te controleren of de bal door het eerste object gaat
+ */
+var checkPunt = function (balX, balY) {
+  return (balX > puntObjectX1 && balX < puntObjectX2 && balY > puntObjectY1 && balY < puntObjectY2);
+};
+
+/**
+ * Hulpfunctie om te controleren of de bal door het tweede object gaat
+ */
+var checkTegenpartijPunt = function (balX, balY) {
+  return (balX > tegenpartijObjectX1 && balX < tegenpartijObjectX2 && balY > tegenpartijObjectY1 && balY < tegenpartijObjectY2);
+};
