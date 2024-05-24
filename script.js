@@ -250,11 +250,11 @@ var tekenAlles = function () {
 
   // speler2
 
-  image(img4, spelerX2, spelerY2, 200, 200);
+  image(img4, spelerX2, spelerY2, 36, 155);
 
   //speler3
 
-  image(img6, spelerX3, spelerY3, 200, 200);
+  image(img6, spelerX3, spelerY3, 36, 155);
 
 };
 
@@ -329,3 +329,39 @@ function draw() {
     }
  }
 }
+
+/**
+ * Checkt botsingen
+ * Verwijdert neergeschoten dingen
+ * Updatet globale variabelen punten en health
+ */
+var verwerkBotsing = function () {
+  // botsing bal tegen spelers
+  if (checkBotsing(spelerX, spelerY, objectX2, objectY2) || 
+      checkBotsing(spelerX1, spelerY1, objectX2, objectY2) || 
+      checkBotsing(spelerX2, spelerY2, objectX2, objectY2) || 
+      checkBotsing(spelerX3, spelerY3, objectX2, objectY2)) {
+    // Omkeren van de richtingen van de bal
+    bounce = !bounce;
+    bounceR = !bounceR;
+    bounceL = !bounceL;
+  }
+};
+
+/**
+ * Hulpfunctie om botsingen te controleren
+ */
+var checkBotsing = function (spelerX, spelerY, objectX2, objectY2) {
+  // Aannemen dat de spelers en de bal vierkante objecten zijn
+  // Controleer of de rechthoeken elkaar overlappen
+  let spelerBreedte = 36;  // Breedte van de speler
+  let spelerHoogte = 155;  // Hoogte van de speler
+  let objectGrootte = 70;   // Aannemen dat de bal een breedte en hoogte van 70 heeft
+
+  return !(
+    spelerX > objectX2 + objectGrootte ||
+    spelerX + spelerBreedte < objectX2 ||
+    spelerY > objectY2 + objectGrootte ||
+    spelerY + spelerHoogte < objectY2
+  );
+};
