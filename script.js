@@ -238,15 +238,15 @@ var tekenAlles = function () {
 
   // object2
 
-  image(img5, objectX2, objectY2, 70, 70);
+  image(img5, objectX2, objectY2, 40, 40);
 
   // speler
 
-  image(img, spelerX, spelerY, 200, 200);
+  image(img, spelerX, spelerY, 36, 155);
 
   // speler1
 
-  image(img3, spelerX1, spelerY1, 200, 200);
+  image(img3, spelerX1, spelerY1, 36, 155);
 
   // speler2
 
@@ -330,6 +330,15 @@ function draw() {
  }
 }
 
+// Nieuwe objectcoördinaten en afmetingen
+let lefthoopX = 127;
+let lefthoopY = 202;
+let righthoopX = 1140;
+let righthoopY = 205;
+
+let hoopBreedte = 20;
+let hoopHoogte = 185;
+
 /**
  * Checkt botsingen
  * Verwijdert neergeschoten dingen
@@ -340,7 +349,9 @@ var verwerkBotsing = function () {
   if (checkBotsing(spelerX, spelerY, objectX2, objectY2) || 
       checkBotsing(spelerX1, spelerY1, objectX2, objectY2) || 
       checkBotsing(spelerX2, spelerY2, objectX2, objectY2) || 
-      checkBotsing(spelerX3, spelerY3, objectX2, objectY2)) {
+      checkBotsing(spelerX3, spelerY3, objectX2, objectY2) || 
+      checkBotsing(righthoopX, righthoopY, objectX2, objectY2, hoopBreedte, hoopHoogte) ||
+      checkBotsing(lefthoopX, lefthoopY, objectX2, objectY2, hoopBreedte, hoopHoogte)) {
     // Omkeren van de richtingen van de bal
     bounce = !bounce;
     bounceR = !bounceR;
@@ -351,12 +362,9 @@ var verwerkBotsing = function () {
 /**
  * Hulpfunctie om botsingen te controleren
  */
-var checkBotsing = function (spelerX, spelerY, objectX2, objectY2) {
-  // Aannemen dat de spelers en de bal vierkante objecten zijn
+var checkBotsing = function (spelerX, spelerY, objectX2, objectY2, spelerBreedte = 36, spelerHoogte = 155) {
   // Controleer of de rechthoeken elkaar overlappen
-  let spelerBreedte = 36;  // Breedte van de speler
-  let spelerHoogte = 155;  // Hoogte van de speler
-  let objectGrootte = 70;   // Aannemen dat de bal een breedte en hoogte van 70 heeft
+  let objectGrootte = 40;   // Aannemen dat de bal een breedte en hoogte van 70 heeft
 
   return !(
     spelerX > objectX2 + objectGrootte ||
@@ -365,3 +373,12 @@ var checkBotsing = function (spelerX, spelerY, objectX2, objectY2) {
     spelerY + spelerHoogte < objectY2
   );
 };
+
+/**
+ * Muisklik functie
+ */
+function mousePressed() {
+  let x = mouseX;
+  let y = mouseY;
+  alert('Coördinaten: (' + x + ', ' + y + ')');
+}
