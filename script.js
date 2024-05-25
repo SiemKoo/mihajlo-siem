@@ -20,39 +20,39 @@ const SPELEN = 1;
 const GAMEOVER = 2;
 let spelStatus = STARTSCHERM;
 
-let spelerX = 700; // x-positie van speler
-let spelerY = 451; // y-positie van speler
+let walterwhite_X = 700; // x-positie van speler
+let walterwhite_Y = 451; // y-positie van speler
 let health = 100;  // health van speler
 
-let spelerX1 = 900;
-let spelerY1 = 451;
+let jessepinkman_X = 900;
+let jessepinkman_Y = 451;
  
-let spelerX2 = 350;
-let spelerY2 = 451;
+let aang_X = 350;
+let aang_Y = 451;
 
-let spelerX3 = 150;
-let spelerY3 = 451;
+let sokka_X = 150;
+let sokka_Y = 451;
 
-let objectX = 900;
-let objectY = 170;
-
-
-let objectX1 = -120;
-let objectY1 = 170;
+let baskethoopr_X = 900;
+let baskethoopr_Y = 170;
 
 
+let baskethoopl_X = -120;
+let baskethoopl_Y = 170;
 
 
-let img;  // plaatje
-let img1; // plaatje
-let img2; // plaatje
-let img3; // plaatje
-let img4; // plaatje
-let img5; // plaatje
-let img6; // plaatje
-let img7; // plaatje
-let img8; // plaatje
-let img9; // plaatje
+
+
+let walterwhite_img;  // plaatje
+let baskethoopr_img; // plaatje
+let baskethoopl_img; // plaatje
+let jesssepinkman_img; // plaatje
+let aang_img; // plaatje
+let basketbal_img; // plaatje
+let sokka_img; // plaatje
+let basketbalveld_img; // plaatje
+let beginfoto_img; // plaatje
+let eindfoto_img; // plaatje
 
 
 let spelerSpringt = false;
@@ -82,14 +82,14 @@ let bounceL;
 var beweegAlles = function () {
   // speler & speler1
 
-  if (keyIsDown(37) && spelerX > -60) { //arrow left
-    spelerX = spelerX - 4;
-    spelerX1 = spelerX1 - 4;
+  if (keyIsDown(37) && walterwhite_X > -60) { //arrow left
+    walterwhite_X = walterwhite_X - 4;
+    jessepinkman_X = jessepinkman_X - 4;
   }
 
-  if (keyIsDown(39) && spelerX < 1180) { //arrow right
-    spelerX = spelerX + 4;
-    spelerX1 = spelerX1 + 4;
+  if (keyIsDown(39) && walterwhite_X < 1180) { //arrow right
+    walterwhite_X = walterwhite_X + 4;
+    jessepinkman_X = jessepinkman_X + 4;
   }
   if (spelerSpringt === false && keyIsDown(38)) { //arrow up
 
@@ -99,16 +99,16 @@ var beweegAlles = function () {
     
     }
     
-    if (spelerSpringt === true && (spelerY<720 || spelerY1<720) ) {
+    if (spelerSpringt === true && (walterwhite_Y<720 || jessepinkman_Y<720) ) {
     
-    spelerY = spelerY - springSnelheid;
-    spelerY1 = spelerY1 - springSnelheid;
+    walterwhite_Y = walterwhite_Y - springSnelheid;
+    jessepinkman_Y = jessepinkman_Y - springSnelheid;
     
     springSnelheid = springSnelheid - zwaartekracht;
     
     }
 
-    if (spelerY > 451  || spelerY1 > 451) {
+    if (walterwhite_Y > 451  || jessepinkman_Y > 451) {
     
       spelerSpringt = false;
       
@@ -116,14 +116,14 @@ var beweegAlles = function () {
 
   //speler2 & 3
 
-  if (keyIsDown(65) && spelerX2 > -60) { //A
-    spelerX2 = spelerX2 - 4;
-    spelerX3 = spelerX3 - 4;
+  if (keyIsDown(65) && aang_X > -60) { //A
+    aang_X = aang_X - 4;
+    sokka_X = sokka_X - 4;
   }
 
-  if (keyIsDown(68) && spelerX2 < 1180) { //D
-    spelerX2 = spelerX2 + 4;
-    spelerX3 = spelerX3 + 4;
+  if (keyIsDown(68) && aang_X < 1180) { //D
+    aang_X = aang_X + 4;
+    sokka_X = sokka_X + 4;
 
   }
 if (spelerSpringt1 === false && keyIsDown(87)) { //arrow up
@@ -134,27 +134,27 @@ if (spelerSpringt1 === false && keyIsDown(87)) { //arrow up
   
   }
   
-  if (spelerSpringt1 === true && (spelerY2<720 || spelerY3<720)) {
+  if (spelerSpringt1 === true && (aang_Y<720 || sokka_Y<720)) {
   
-  spelerY2 = spelerY2 - springSnelheid1;
-  spelerY3 = spelerY3 - springSnelheid1;
+  aang_Y = aang_Y - springSnelheid1;
+  sokka_Y = sokka_Y - springSnelheid1;
   
   springSnelheid1 = springSnelheid1 - zwaartekracht1;
   
   }
   
-  if (spelerY2 > 451 || spelerY3 > 451) {
+  if (aang_Y > 451 || sokka_Y > 451) {
   
   spelerSpringt1 = false;
   
   }
   // object2
-if ( objectY2 < 0 ) {
+if ( basketbal_Y < 0 ) {
  val = true;
  bounce = false;
 }
 if (val === true) {
-  objectY2 = objectY2 +1 +versnelling;
+  basketbal_Y = basketbal_Y +1 +versnelling;
  versnelling = versnelling + 0.2;
  if(versnelling > 5) {
   versnelling = 5;
@@ -162,38 +162,38 @@ if (val === true) {
 }
 
 
-if ( objectY2 > 600) {
+if ( basketbal_Y > 600) {
 val = false;
 bounce = true;
   
 
 }
 if (bounce === true) {
-  objectY2 = objectY2 - 3 -versnelling;
+  basketbal_Y = basketbal_Y - 3 -versnelling;
   versnelling = versnelling + 2;
   if(versnelling > 5) {
     versnelling = 5;
   }
 }
-if ( objectX2 < 0) {
+if ( basketbal_X < 0) {
   bounceR = true;
   bounceL = false;
 }
 if (bounceR === true) {
-  objectX2 = objectX2 +1 +versnelling;
+  basketbal_X = basketbal_X +1 +versnelling;
   versnelling = versnelling + 0.2;
   if(versnelling > 5) {
    versnelling = 5;
  }
 }
 
-if (objectX2 > 1200) {
+if (basketbal_X > 1200) {
   bounceR = false;
   bounceL = true;
 }
 
 if (bounceL === true) {
-  objectX2 = objectX2 - 3 -versnelling;
+  basketbal_X = basketbal_X - 3 -versnelling;
   versnelling = versnelling + 2;
   if(versnelling > 5) {
     versnelling = 5;
@@ -225,36 +225,36 @@ var verwerkBotsing = function () {
 var tekenAlles = function () {
   // achtergrond
   
-  image( img7, 0, 0, 1280, 720);
+  image( basketbalveld_img, 0, 0, 1280, 720);
   //rect(0, 0, 1280, 720)
 
   // object
 
-  image(img1, objectX, objectY, 500, 500);
+  image(baskethoopr_img, baskethoopr_X, baskethoopr_Y, 500, 500);
 
 
   // object1
-  image(img2, objectX1, objectY1, 500, 500);
+  image(baskethoopl_img, baskethoopl_X, baskethoopl_Y, 500, 500);
 
   // object2
 
-  image(img5, objectX2, objectY2, 40, 40);
+  image(basketbal_img, basketbal_X, basketbal_Y, 40, 40);
 
   // speler
 
-  image(img, spelerX, spelerY, 36, 155);
+  image(walterwhite_img, walterwhite_X, walterwhite_Y, 36, 155);
 
   // speler1
 
-  image(img3, spelerX1, spelerY1, 36, 155);
+  image(jesssepinkman_img, jessepinkman_X, jessepinkman_Y, 36, 155);
 
   // speler2
 
-  image(img4, spelerX2, spelerY2, 36, 155);
+  image(aang_img, aang_X, aang_Y, 36, 155);
 
   //speler3
 
-  image(img6, spelerX3, spelerY3, 36, 155);
+  image(sokka_img, sokka_X, sokka_Y, 36, 155);
 
 
   // Toon de score
@@ -314,16 +314,16 @@ function setup() {
  * deze functie geeft de player een plaatje
  */
 function preload() {
-  img = loadImage('players/group-breaking-bad/walterwhite.png');
-  img1 = loadImage('items/baskethoopr.png');
-  img2 = loadImage('items/baskethoopl.png');
-  img3 = loadImage('players/group-breaking-bad/jessepinkman.png');
-  img4 = loadImage('players/group-avatar/aang.png');
-  img5 = loadImage('items/basketball.png');
-  img6 = loadImage('players/group-avatar/sokka.png');
-  img7 = loadImage('basketballcourt.png');
-  img8 = loadImage('beginfoto.png');
-  img9 = loadImage('eindfoto.png');
+  walterwhite_img = loadImage('players/group-breaking-bad/walterwhite.png');
+  baskethoopr_img = loadImage('items/baskethoopr.png');
+  baskethoopl_img = loadImage('items/baskethoopl.png');
+  jesssepinkman_img = loadImage('players/group-breaking-bad/jessepinkman.png');
+  aang_img = loadImage('players/group-avatar/aang.png');
+  basketbal_img = loadImage('items/basketbal.png');
+  sokka_img = loadImage('players/group-avatar/sokka.png');
+  basketbalveld_img = loadImage('basketbalveld.png');
+  beginfoto_img = loadImage('beginfoto.png');
+  eindfoto_img = loadImage('eindfoto.png');
 }
 
 /**
@@ -335,7 +335,7 @@ function draw() {
   if (spelStatus === STARTSCHERM) {
     // toon STARTSCHERM met uitleg
     //background('green')
-    image( img8, 0, 0, 1280, 720);
+    image( beginfoto_img, 0, 0, 1280, 720);
     fill('white');
     textSize(24);
     textAlign(CENTER, CENTER);
@@ -354,7 +354,7 @@ function draw() {
     tekenAlles();
   } else if (spelStatus === GAMEOVER) {
     // GAME OVER SCHERM
-    image( img9, 0, 0, 1280, 720);
+    image( eindfoto_img, 0, 0, 1280, 720);
     fill('black');
     textStyle(BOLD);
     textSize(24);
@@ -384,12 +384,12 @@ let hoopHoogte = 185;
  */
 var verwerkBotsing = function () {
   // botsing bal tegen spelers
-  if (checkBotsing(spelerX, spelerY, objectX2, objectY2) || 
-      checkBotsing(spelerX1, spelerY1, objectX2, objectY2) || 
-      checkBotsing(spelerX2, spelerY2, objectX2, objectY2) || 
-      checkBotsing(spelerX3, spelerY3, objectX2, objectY2) || 
-      checkBotsing(righthoopX, righthoopY, objectX2, objectY2, hoopBreedte, hoopHoogte) ||
-      checkBotsing(lefthoopX, lefthoopY, objectX2, objectY2, hoopBreedte, hoopHoogte)) {
+  if (checkBotsing(walterwhite_X, walterwhite_Y, basketbal_X, basketbal_Y) || 
+      checkBotsing(jessepinkman_X, jessepinkman_Y, basketbal_X, basketbal_Y) || 
+      checkBotsing(aang_X, aang_Y, basketbal_X, basketbal_Y) || 
+      checkBotsing(sokka_X, sokka_Y, basketbal_X, basketbal_Y) || 
+      checkBotsing(righthoopX, righthoopY, basketbal_X, basketbal_Y, hoopBreedte, hoopHoogte) ||
+      checkBotsing(lefthoopX, lefthoopY, basketbal_X, basketbal_Y, hoopBreedte, hoopHoogte)) {
     // Omkeren van de richtingen van de bal
     bounce = !bounce;
     bounceR = !bounceR;
@@ -397,13 +397,13 @@ var verwerkBotsing = function () {
   }
 
   // Check of de bal door het object gaat
-  if (checkPunt(objectX2, objectY2)) {
+  if (checkPunt(basketbal_X, basketbal_Y)) {
     score++;
     showPuntMessage = true;
     messageTimer = millis(); // start de timer
     resetBalPositie(); // reset de positie van de bal
   }  
-  else if (checkTegenpartijPunt(objectX2, objectY2)) {
+  else if (checkTegenpartijPunt(basketbal_X, basketbal_Y)) {
     tegenpartijScore++;
     showTegenpartijPuntMessage = true;
     messageTimer = millis(); // start de timer
@@ -414,15 +414,15 @@ var verwerkBotsing = function () {
 /**
  * Hulpfunctie om botsingen te controleren
  */
-var checkBotsing = function (spelerX, spelerY, objectX2, objectY2, spelerBreedte = 36, spelerHoogte = 155) {
+var checkBotsing = function (walterwhite_X, walterwhite_Y, basketbal_X, basketbal_Y, spelerBreedte = 36, spelerHoogte = 155) {
   // Controleer of de rechthoeken elkaar overlappen
   let objectGrootte = 40;   // Aannemen dat de bal een breedte en hoogte van 70 heeft
 
   return !(
-    spelerX > objectX2 + objectGrootte ||
-    spelerX + spelerBreedte < objectX2 ||
-    spelerY > objectY2 + objectGrootte ||
-    spelerY + spelerHoogte < objectY2
+    walterwhite_X > basketbal_X + objectGrootte ||
+    walterwhite_X + spelerBreedte < basketbal_X ||
+    walterwhite_Y > basketbal_Y + objectGrootte ||
+    walterwhite_Y + spelerHoogte < basketbal_Y
   );
 };
 
@@ -458,15 +458,15 @@ let balStartX = 610;
 let balStartY = 200;
 
 // Huidige positie van de bal
-let objectX2 = balStartX;
-let objectY2 = balStartY;
+let basketbal_X = balStartX;
+let basketbal_Y = balStartY;
 
 /**
  * Verplaatst de bal naar de startpositie
  */
 var resetBalPositie = function () {
-  objectX2 = balStartX;
-  objectY2 = balStartY;
+  basketbal_X = balStartX;
+  basketbal_Y = balStartY;
 };
 
 var resetGame = function () {
