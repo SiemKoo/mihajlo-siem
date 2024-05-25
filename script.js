@@ -49,6 +49,11 @@ let basketbalveld_img; // plaatje
 let beginfoto_img; // plaatje
 let eindfoto_img; // plaatje
 
+
+let gejuich_audio; // geluid
+let gameover_audio; // geluid
+let intro_audio; // geluid
+
 let spelerSpringt = false;
 let springSnelheid = 0;
 let springSnelheidStart = 20;
@@ -58,8 +63,6 @@ let spelerSpringt1 = false;
 let springSnelheid1 = 0;
 let springSnelheidStart1 = 20;
 let zwaartekracht1 = 1.8;
-
-let zwaartekrachtbal = 1.8;
 
 let versnelling = 0.2;
 let val = true;
@@ -245,12 +248,14 @@ var verwerkBotsing = function () {
 
   // Check of de bal door het object gaat
   if (checkPunt(basketbal_X, basketbal_Y)) {
+    gejuich_audio.play();
     score++;
     showPuntMessage = true;
     messageTimer = millis(); // start de timer
     resetBalPositie(); // reset de positie van de bal
   } else if (checkTegenpartijPunt(basketbal_X, basketbal_Y)) {
     tegenpartijScore++;
+    gejuich_audio.play();
     showTegenpartijPuntMessage = true;
     messageTimer = millis(); // start de timer
     resetBalPositie(); // reset de positie van de bal
@@ -398,6 +403,9 @@ function preload() {
   basketbalveld_img = loadImage('basketbalveld.png');
   beginfoto_img = loadImage('beginfoto.png');
   eindfoto_img = loadImage('eindfoto.png');
+  gejuich_audio = new Audio('gejuich.mp3');
+  gameover_audio = new Audio('gameover.mp3');
+  intro_audio = new Audio('intro.mp3');
 }
 
 /**
@@ -408,6 +416,8 @@ function preload() {
 function draw() {
   if (spelStatus === STARTSCHERM) {
     // toon STARTSCHERM met uitleg
+    gameover_audio.pause();
+    intro_audio.play();
     image(beginfoto_img, 0, 0, 1280, 720);
     fill('white');
     textSize(24);
@@ -420,11 +430,13 @@ function draw() {
     }
   } else if (spelStatus === SPELEN) {
     // speelscherm
+    intro_audio.pause();
     beweegAlles();
     verwerkBotsing();
     tekenAlles();
   } else if (spelStatus === GAMEOVER) {
     // GAME OVER SCHERM
+    gameover_audio.play();
     image(eindfoto_img, 0, 0, 1280, 720);
     fill('black');
     textStyle(BOLD);
@@ -439,11 +451,3 @@ function draw() {
   }
 }
 
-/**
- * Muisklik functie
- */
-function mousePressed() {
-  let x = mouseX;
-  let y = mouseY;
-  alert('Coördinaten: (' + x + ', ' + y + ')');
-}
