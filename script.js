@@ -313,7 +313,7 @@ var tekenAlles = function () {
   textAlign(LEFT, TOP);
   text(tegenpartijScore + ' - ' + score, 620, 40);
 
-  if (tegenpartijScore === 1 || score === 1) {
+  if (tegenpartijScore === 3 || score === 3) {
     spelStatus = GAMEOVER;
   }
 
