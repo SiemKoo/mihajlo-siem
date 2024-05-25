@@ -59,6 +59,8 @@ let springSnelheid1 = 0;
 let springSnelheidStart1 = 20;
 let zwaartekracht1 = 1.8;
 
+let zwaartekrachtbal = 1.8;
+
 let versnelling = 0.2;
 let val = true;
 let bounce;
@@ -306,7 +308,7 @@ var tekenAlles = function () {
   textAlign(LEFT, TOP);
   text(tegenpartijScore + ' - ' + score, 620, 40);
 
-  if (tegenpartijScore === 3 || score === 3) {
+  if (tegenpartijScore === 1 || score === 1) {
     spelStatus = GAMEOVER;
   }
 
