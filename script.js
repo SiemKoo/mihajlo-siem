@@ -124,7 +124,7 @@ let tegenpartijObjectY2 = 375;
  * Updatet globale variabelen met posities van speler, vijanden en kogels
  */
 var beweegAlles = function () {
-  // speler & speler1
+  // walterwhite & jessepinkman
   if (keyIsDown(37) && walterwhite_X > -60) { // arrow left
     walterwhite_X -= 4;
     jessepinkman_X -= 4;
@@ -150,7 +150,7 @@ var beweegAlles = function () {
     spelerSpringt = false;
   }
 
-  // speler2 & 3
+  // aang & sokka
   if (keyIsDown(65) && aang_X > -60) { // A
     aang_X -= 4;
     sokka_X -= 4;
