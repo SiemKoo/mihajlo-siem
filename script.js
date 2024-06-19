@@ -14,7 +14,7 @@
 /* ********************************************* */
 /* globale variabelen die je gebruikt in je game */
 /* ********************************************* */
-const STARTSCHERM = 0;
+const STARTSCHERM = 0;  
 const SPELEN = 1;
 const GAMEOVER = 2;
 let spelStatus = STARTSCHERM;
@@ -131,7 +131,7 @@ var beweegAlles = function () {
   }
 
   if (keyIsDown(39) && walterwhite_X < 1180) { // arrow right
-    walterwhite_X += 4;
+    walterwhite_X += 4;                                                                                                                                                                                         
     jessepinkman_X += 4;
   }
 
@@ -401,12 +401,12 @@ function preload() {
   aang_img = loadImage('players/group-avatar/aang.png');
   basketbal_img = loadImage('items/basketbal.png');
   sokka_img = loadImage('players/group-avatar/sokka.png');
-  basketbalveld_img = loadImage('basketbalveld.png');
-  beginfoto_img = loadImage('beginfoto.png');
-  eindfoto_img = loadImage('eindfoto.png');
-  gejuich_audio = new Audio('gejuich.mp3');
-  gameover_audio = new Audio('gameover.mp3');
-  intro_audio = new Audio('intro.mp3');
+  basketbalveld_img = loadImage('extra_afbeeldingen/basketbalveld.png');
+  beginfoto_img = loadImage('extra_afbeeldingen/beginfoto.png');
+  eindfoto_img = loadImage('extra_afbeeldingen/eindfoto.png');
+  gejuich_audio = new Audio('geluidjes/gejuich.mp3');
+  gameover_audio = new Audio('geluidjes/gameover.mp3');
+  intro_audio = new Audio('geluidjes/intro.mp3');
 
 }
 
